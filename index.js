@@ -146,7 +146,7 @@ app.get("/delete/:id", async (req, res) => {
 });
 
 app.use((req, res) => {
-  res.status(404).render("404 | Not Found");
+  res.status(404).send("404 | Not Found");
 });
 // Start Server
 app.listen(PORT, () => {
