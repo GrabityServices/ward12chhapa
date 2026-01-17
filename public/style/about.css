@@ -146,6 +146,7 @@
 .contact-item:hover {
   background: #e0f2fe;
   border-color: #bae6fd;
+  border-bottom: 2px solid #0c2c55;
 } 
 
 .contact-item i {
