@@ -2,6 +2,7 @@ const express = require("express");
 require("dotenv").config();
 const path = require("path");
 const Registration = require("./models/form.js");
+const cookieParser = require("cookie-parser");
 require("./connect.js");
 const PORT = process.env.PORT || 5000;
 console.log (process.env.PORT); 
@@ -15,6 +16,9 @@ app.set("views", path.join(__dirname, "views"));
 // Serve static files
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
+
+app.use(cookieParser());
+
 app.use(express.json());
 
 // Home Page
@@ -127,7 +131,25 @@ app.post("/register", async (req, res) => {
 app.get("/download", (req, res) => {
   res.render("download");
 });
+
+
+app.use("/admin", require("./routes/admin.js"));
+app.get("/delete/:id", async (req, res) => {
+  try {
+    const formId = req.params.id;
+    await Registration.findByIdAndDelete(formId);
+    res.redirect("/admin/dashboard");
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Error deleting the entry.");
+  } 
+});
+
+app.use((req, res) => {
+  res.status(404).render("404 | Not Found");
+});
 // Start Server
 app.listen(PORT, () => {
   console.log(`🔥 Server running at http://localhost:${PORT}`);
 });
+

@@ -67,6 +67,9 @@
 
     <section class="form-section">
       <h1>प्रतियोगिता पंजीकरण फॉर्म</h1>
+      <h3 style="font-size: 18px; font-weight: 400;color: red;" ><strong >सूचना:</strong> यह फॉर्म शासकीय/सार्वजनिक उद्देश्य हेतु है।
+इसमें जानबूझकर गलत विवरण देना कानूनन अपराध है।
+पकड़े जाने पर संबंधित व्यक्ति पर ₹500 तक का आर्थिक दंड लगाया जा सकता है।</h3>
 
       <form action="/register" method="POST" class="register-form">
         <!-- Name -->
@@ -157,7 +160,7 @@
         <button type="submit">फॉर्म सबमिट करें</button>
       </form>
       <% if (typeof error !== "undefined" && error) { %>
-      <div class="error-message"><%= error %></div>
+      <div style="color: red;" class="error-message"><%= error %></div>
       <% } %>
     </section>
     <%- include("partial/footer.ejs") %>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #4f46e5, #06b6d4);
+    }
+
+    .login-box {
+      background: #ffffff;
+      width: 100%;
+      max-width: 380px;
+      padding: 35px;
+      border-radius: 14px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+      animation: fadeIn 0.6s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .login-box h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #1f2937;
+      font-weight: 600;
+    }
+
+    .error {
+      background: #fee2e2;
+      color: #991b1b;
+      padding: 10px;
+      border-radius: 6px;
+      font-size: 13px;
+      text-align: center;
+      margin-bottom: 15px;
+      animation: shake 0.4s;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      50% { transform: translateX(5px); }
+      75% { transform: translateX(-5px); }
+    }
+
+    .input-group {
+      margin-bottom: 18px;
+      position: relative;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 8px;
+      border: 1px solid #d1d5db;
+      font-size: 14px;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+
+    .input-group input:focus {
+      border-color: #4f46e5;
+      box-shadow: 0 0 0 3px rgba(79,70,229,0.2);
+    }
+
+    .input-group label {
+      position: absolute;
+      top: 50%;
+      left: 14px;
+      transform: translateY(-50%);
+      background: #fff;
+      padding: 0 6px;
+      font-size: 13px;
+      color: #6b7280;
+      pointer-events: none;
+      transition: all 0.25s ease;
+    }
+
+    .input-group input:focus + label,
+    .input-group input:not(:placeholder-shown) + label {
+      top: -6px;
+      font-size: 11px;
+      color: #4f46e5;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(135deg, #4f46e5, #6366f1);
+      color: #ffffff;
+      border: none;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(79,70,229,0.4);
+    }
+
+    button:active {
+      transform: translateY(0);
+      box-shadow: none;
+    }
+
+    .footer-text {
+      text-align: center;
+      font-size: 12px;
+      color: #6b7280;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="login-box">
+    <h2>🔐 Admin Login</h2>
+
+    <% if (error) { %>
+      <div class="error"><%= error %></div>
+    <% } %>
+
+    <form method="POST" action="/admin/login">
+      <div class="input-group">
+        <input type="text" name="username" required placeholder=" " />
+        <label>Username / Phone</label>
+      </div>
+
+      <div class="input-group">
+        <input type="password" name="password" required placeholder=" " />
+        <label>Password</label>
+      </div>
+
+      <button type="submit">Login</button>
+    </form>
+
+    <div class="footer-text">
+      © Admin Panel • Authorized Access Only
+    </div>
+  </div>
+
+</body>
+</html>
