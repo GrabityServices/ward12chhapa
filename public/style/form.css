@@ -1,0 +1,84 @@
+/* =====================
+   Form Section
+===================== */
+.form-section {
+  max-width: 400px;
+  margin: 40px auto 60px;
+  margin-left: calc(50% - 200px);
+  padding: 30px 22px;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+    font-family: "Bakbak One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Title */
+.form-section h1 {
+  font-size: 22px;
+  color: #0c2c55;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 400;
+}
+
+/* Form */
+.register-form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Labels */
+.register-form label {
+  font-size: 14px;
+  margin-bottom: 6px;
+  font-family: "Bakbak One", cursive;
+
+  color: #374151;
+  font-weight: 600;
+}
+
+/* Inputs & Select */
+.register-form input,
+.register-form select {
+  padding: 10px 12px;
+  font-size: 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  margin-bottom: 16px;
+  outline: none;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+.register-form input:focus,
+.register-form select:focus {
+  border-color: #0c2c55;
+  box-shadow: 0 0 0 2px rgba(12,44,85,0.12);
+}
+
+/* Submit Button */
+.register-form button {
+  margin-top: 10px;
+  padding: 12px;
+  font-size: 15px;
+  background: #0c2c55;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition:  0.25s ease, transform 0.15s ease;
+}
+
+.register-form button:hover {
+  background: #143b73;
+  transform: translateY(-1px);
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .form-section {
+    margin: 30px 14px 50px;
+    padding: 24px 18px;
+  }
+}

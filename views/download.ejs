@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>माँ सरस्वती पूजा विश कार्ड</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;800&family=Poppins:wght@500&display=swap" rel="stylesheet">
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+  <style>
+    :root {
+      --primary-yellow: #FFD700;
+      --deep-saffron: #FF8C00;
+      --dark-red: #A52A2A;
+      --gold-gradient: linear-gradient(45deg, #bf953f, #fcf6ba, #b38728, #fcf6ba, #aa771c);
+    }
+
+    body {
+      font-family: 'Noto Sans Devanagari', sans-serif;
+      background-color: #fdf6e3;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 450px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .card-creator {
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      margin-bottom: 25px;
+      border-top: 5px solid var(--deep-saffron);
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      box-sizing: border-box;
+    }
+
+    .buttons { display: flex; gap: 10px; justify-content: center; }
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      color: white;
+    }
+    .btn-primary { background-color: var(--deep-saffron); }
+    .btn-secondary { background-color: var(--dark-red); }
+
+    /* --- ENHANCED CARD DESIGN --- */
+    #card-preview {
+      width: 100%;
+      aspect-ratio: 1 / 1.2; 
+      position: relative;
+      overflow: hidden;
+      display: none;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      border-radius: 10px;
+      /* Decorative Border */
+      border: 10px solid transparent;
+      border-image: var(--gold-gradient) 10;
+      background-color: #ffffff94;
+    }
+
+    /* Fixed Background Layer */
+    .card-bg-layer {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background-image: url('/images/image.png');
+      background-size: cover;
+      background-position: center;
+      /* यहा opacity बढ़ाई गई है ताकि इमेज दिखे */
+      opacity: 0.55; 
+      z-index: 1;
+    }
+
+    /* Soft yellow tint over the image */
+    .card-gradient-overlay {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,215,0,0.1) 100%);
+      z-index: 2;
+    }
+
+    .content {
+      position: relative;
+      z-index: 3;
+      padding: 25px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-sizing: border-box;
+    }
+
+    .corner-decor {
+      position: absolute;
+      width: 70px;
+      height: 70px;
+      z-index: 4;
+      filter: drop-shadow(2px 2px 5px rgba(0,0,0,0.2));
+    }
+    .top-left { top: 10px; left: 10px; }
+    .top-right { top: 10px; right: 10px; transform: scaleX(-1); }
+
+    .title {
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--dark-red);
+      margin-top: 40px;
+      text-shadow: 1px 1px 2px rgba(255,215,0,0.8);
+      line-height: 1.3;
+    }
+
+    .subtitle {
+      font-size: 1.05rem;
+      color: #ff0044;
+      font-weight: 700;
+      padding: 5px;
+      filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.9)) drop-shadow(0 0 5px rgba(255, 215, 0, 0.5));
+      border-radius: 5px;
+    }
+
+    /* Glassmorphism Big Wish Box */
+    .big-wish {
+      display: flex;
+      gap: 15px;
+      background: rgba(255, 255, 255, 0.273);
+      backdrop-filter: blur(5px);
+      padding: 15px;
+      border: 1px solid rgba(255, 140, 0, 0.3);
+      border-left: 5px solid var(--deep-saffron);
+      border-radius: 15px;
+      align-items: center;
+      text-align: left;
+      margin-bottom: 50px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .big-wish p {
+      margin: 0;
+      font-size: 0.95rem;
+      color: #333;
+      line-height: 1.4;
+    }
+
+    .user-img {
+      height: 85px;
+      width: 85px;
+      border-radius: 50%;
+      border: 3px solid var(--deep-saffron);
+      box-shadow: 0 0 10px rgba(255, 87, 34, 0.5);
+      object-fit: cover;
+    }
+
+    .footer-signature {
+      position: absolute;
+      bottom: 15px;
+      left: 0;
+      right: 0;
+      margin: auto;
+      width: 90%;
+      background: var(--gold-gradient);
+      color: var(--dark-red);
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-weight: 800;
+      font-size: 0.7rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      z-index: 4;
+      display: flex;
+      justify-content: center;
+      gap: 5px;
+    }
+    a{
+      text-decoration: none;
+      color: white;
+      background-color: #555;
+      padding: 10px 15px;
+      border-radius: 6px;
+      font-weight: 600;
+    }
+
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>बसंत पंचमी कार्ड मेकर</h1>
+
+  <div class="card-creator">
+    <div class="input-group">
+      <input type="text" id="userName" placeholder="अपना नाम यहाँ लिखें..." autocomplete="off">
+    </div>
+    <div class="buttons">
+      <a href="/">&leftarrow; बाहर जाएं</a>
+      <button class="btn-primary" onclick="updateCard()"> &#128269;	देखें</button>
+      <button class="btn-secondary" onclick="downloadImage()">डाउनलोड</button>
+    </div>
+  </div>
+
+  <div id="card-preview">
+    <div class="card-bg-layer"></div>
+    <div class="card-gradient-overlay"></div>
+    
+    <img src="/images/saraswati-puja.png" class="corner-decor top-left" alt="decor">
+    <img src="/images/saraswati-puja.png" class="corner-decor top-right" alt="decor">
+    
+    <div class="content">
+      <div class="title">!! ॐ ऐं सरस्वत्यै नमः !!<br>
+        <span style="font-size: 1.6rem; color: #d32f2f;">!! शुभ सरस्वती पूजा !!</span>
+      </div>
+
+      <div class="subtitle">विद्या, बुद्धि और ज्ञान की देवी माँ सरस्वती<br>आपके जीवन में प्रकाश भर दें।</div>
+      
+      <div class="big-wish">
+        <p>मेरी ओर से आपको और आपके पूरे परिवार को बसंत पंचमी की हार्दिक शुभकामनाएँ! <br>
+          <strong>- <span id="displayName">Rajeev Kumar Ranjan</span></strong>
+        </p>
+        <img class="user-img" src="/images/rajeevkr3.jpg" alt="user">
+      </div>
+    </div>
+    
+    <div class="footer-signature">
+      <span>Rajeev Kumar Ranjan</span> | <span>Ward - 12</span> | <span>Chhapa, Bihar</span> | <span><%= new Date().toLocaleDateString('hi-IN') %></span>
+    </div>
+  </div>
+</div>
+
+<script>
+  function updateCard() {
+    const nameInput = document.getElementById('userName').value.trim();
+    const displayNameSpan = document.getElementById('displayName');
+    const card = document.getElementById('card-preview');
+    
+    displayNameSpan.innerText = nameInput || "Rajeev Kumar Ranjan";
+    card.style.display = 'block';
+    card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  function downloadImage() {
+    const card = document.getElementById('card-preview');
+    if(card.style.display === 'none') { alert("पहले कार्ड जेनरेट करें"); return; }
+    
+    html2canvas(card, { scale: 3, useCORS: true, backgroundColor: null }).then(canvas => {
+        const link = document.createElement('a');
+        link.download = 'Saraswati_Puja_Wish.jpg';
+        link.href = canvas.toDataURL('image/jpeg', 0.95);
+        link.click();
+    });
+  }
+</script>
+</body>
+</html>

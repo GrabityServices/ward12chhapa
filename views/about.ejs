@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title><%= title %></title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="<%= description %>" />
+    <meta name="keywords" content="<%= keywords %>" />
+    <meta name="author" content="<%= author %>" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Open Graph (for social sharing) -->
+    <meta property="og:title" content="<%= title %>" />
+    <meta property="og:description" content="<%= description %>" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="<%= url %>" />
+    <meta property="og:image" content="<%= image %>" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bakbak+One&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bakbak+One&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bakbak+One&family=Modak&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bakbak+One&family=Modak&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/style/about.css" />
+    <link rel="stylesheet" href="/style/style.css" />
+  </head>
+  <body>
+    <%- include("partial/nav.ejs") %>
+      <section class="about-section">
+
+    <!-- Intro -->
+    <h1>हमारे बारे में</h1>
+    <p class="intro">
+      सरस्वती शिशु समाज, हरहंजा एक शैक्षणिक एवं सामाजिक पहल है,
+      जिसका उद्देश्य बच्चों के सर्वांगीण विकास के माध्यम से
+      समाज को एक बेहतर दिशा देना है।
+    </p>
+
+    <!-- Profile -->
+    <div class="profile-box">
+      <img src="/images/rajeevkr3.jpg" alt="Rajeev Kumar Ranjan">
+
+      <div>
+        <h2>सेवाभाव से समर्पित</h2>
+        <p>
+          यह पहल समाज के लिए शिक्षा, अनुशासन और
+          स्वस्थ प्रतिस्पर्धा को बढ़ावा देने के उद्देश्य से
+          प्रारंभ की गई है।
+        </p>
+
+        <p class="served-by">
+          सेवाभाव से प्रस्तुत —  
+          <strong>राजीव कुमार रंजन</strong><br>
+          (वार्ड सदस्य, वार्ड संख्या 12)<br>
+          <span style="color: rgb(187, 207, 207);">पिता — श्री रामदेव मंडल (Engineer)</span><br>
+        </p>
+      </div>
+    </div>
+<!-- Contact Details -->
+<h2>संपर्क विवरण</h2>
+
+<div class="contact-box">
+  <div class="contact-item">
+    <i class="fa-solid fa-phone"></i>
+    <div>
+      <strong>फ़ोन</strong>
+      <p><a href="tel:+918603130434">+91 86031 30434</a></p>
+    </div>
+  </div>
+
+  <div class="contact-item">
+    <i class="fa-brands fa-whatsapp"></i>
+    <div>
+      <strong>WhatsApp</strong>
+      <p>
+        <a
+          href="https://wa.me/+918603130434"
+          target="_blank"
+        >
+          WhatsApp पर संपर्क करें
+        </a>
+      </p>
+    </div>
+  </div>
+
+  <div class="contact-item">
+    <i class="fa-solid fa-envelope"></i>
+    <div>
+      <strong>ई-मेल</strong>
+      <p>
+        <a href="mailto:dkumar06545@gmail.com">
+          dkumar06545@gmail.com
+        </a>
+      </p>
+    </div>
+  </div>
+
+  <div class="contact-item">
+    <i class="fa-solid fa-location-dot"></i>
+    <div>
+      <strong>पता</strong>
+      <p><a href="https://www.google.com/search?q=Harhanja+Ward-12%2C+Chhapa%2C+Jhajha+811308+Bihar">हरहंजा वार्ड-12, छापा | झाझा 811308 | Bihar</a> </div></p>
+    </div>
+  </div>
+</div>
+
+    <!-- Vision -->
+    <h2>हमारी दृष्टि (Vision)</h2>
+    <p>
+      हमारा विश्वास है कि केवल पढ़ाई ही नहीं,
+      बल्कि संस्कार, खेल, नागरिक जिम्मेदारी और
+      व्यावहारिक ज्ञान ही बच्चों को सशक्त बनाता है।
+    </p>
+
+    <!-- Future Goals -->
+    <h2>हमारे भविष्य के लक्ष्य</h2>
+    <ul>
+      <li>📘 बच्चों के लिए नियमित शैक्षणिक प्रतियोगिताएँ</li>
+      <li>🏆 खेल एवं सांस्कृतिक गतिविधियों को बढ़ावा</li>
+      <li>🧠 डिजिटल एवं तकनीकी जागरूकता</li>
+      <li>🤝 नागरिक जिम्मेदारी और सामाजिक चेतना</li>
+    </ul>
+
+    <!-- Event Place -->
+    <h2>कार्यक्रम स्थल</h2>
+    <p>
+      सरस्वती पूजा विशेष प्रतियोगिता का आयोजन
+      हरहंजा क्षेत्र में निर्धारित स्थल पर किया जाएगा।
+    </p>
+
+    <!-- Google Map -->
+    <div class="map-box">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4521.865481029362!2d86.39007778691597!3d24.8206254900238!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f17926f3341c57%3A0x39b5d82446bfdb8e!2sMaa%20Kali%20Mandir%20harhanja!5e1!3m2!1sen!2sin!4v1768606528221!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+
+  </section>
+    <%- include("partial/footer.ejs")  %>
+
+    <script>
+      function toggleMenu() {
+        document.getElementById("navLinks").classList.toggle("active");
+      }
+    </script>
+  </body>
+</html>

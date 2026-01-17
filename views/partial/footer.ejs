@@ -1,0 +1,71 @@
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-brand">
+      <h2>सरस्वती शिशु समाज, हरहंजा</h2>
+      <p>
+        यह संस्था बच्चों के सर्वांगीण विकास के लिए शिक्षा, ज्ञान, संस्कार और
+        स्वस्थ प्रतिस्पर्धा को बढ़ावा देने का कार्य करती है। हमारा उद्देश्य
+        बच्चों में नागरिक जिम्मेदारी, आत्मविश्वास और सामाजिक चेतना विकसित करना
+        है।
+      </p>
+
+      <p>
+        यह पहल हमारे समाज को एक बेहतर, शिक्षित और आत्मनिर्भर भविष्य की ओर ले
+        जाने का प्रयास है।
+      </p>
+
+      <p style="margin-top: 12px; font-size: 14px; opacity: 0.9">
+        सेवाभाव से प्रस्तुत — <strong style="font-size: 20px;">राजीव कुमार रंजन</strong><br />
+        <strong>सवका साथ, सवका विकास, सवका विश्वास| </strong><br />
+        (वार्ड सदस्य, वार्ड संख्या 12)<br />
+        समाज के विकास की दिशा में एक सार्थक पहल। <br>
+      </p>
+    </div>
+    <div class="footer-info">
+      <div class="footer-links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="/">About</a></li>
+          <li><a href="/rules">Games</a></li>
+          <li><a href="/register">Form</a></li>
+        </ul>
+      </div>
+          <%
+            const today = new Date();
+            const limitDate = new Date("2026-01-23"); // 23 Jan 2026
+
+            let message = "";
+
+            if (today > limitDate) {
+                message = "आज के बच्चों को केवल पढ़ाई-लिखाई तक सीमित नहीं रखना चाहिए, बल्कि उन्हें ज़िम्मेदार नागरिक बनाना और खेल के प्रति उत्साह भी विकसित करना आवश्यक है। यह मंच समाज की वर्तमान आवश्यकता को सही दिशा दीया। धन्यवाद!";
+              } else {
+                message = "आज के बच्चों को केवल पढ़ाई-लिखाई तक सीमित नहीं रखना चाहिए, बल्कि उन्हें ज़िम्मेदार नागरिक बनाना और खेल के प्रति उत्साह भी विकसित करना आवश्यक है। यह मंच समाज की वर्तमान आवश्यकता को सही दिशा देगा। धन्यवाद!";
+            }
+
+            const encodedMessage = encodeURIComponent(message);
+          %>
+      <div class="footer-contact">
+        <h3>Contact</h3>
+        <p title="Cilck me">
+          <a
+            href="mailto:dkumar06545@gmail.com?subject=Feedback&body=<%= encodedMessage  %>"
+            ><i class="fa-solid fa-envelope"></i
+          ></a>
+          <a
+            href="https://wa.me/+918603130434?text=<%= encodedMessage  %>"
+            target="_blank"
+            ><i class="fa-brands fa-square-whatsapp"></i
+          ></a>
+          <a href="tel:+918603130434"><i class="fa-solid fa-phone"></i></a>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>
+      ©<%= new Date().getFullYear() %> सरस्वती शिशु समाज, हरहंजा. सर्वाधिकार
+      सुरक्षित।  
+    </p>
+    <span>Developed by <a href="https://gravityservices.netlify.app/">Gravity Services</a></span>
+  </div>
+</footer>

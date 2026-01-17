@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title><%= title %></title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="<%= description %>" />
+    <meta name="keywords" content="<%= keywords %>" />
+    <meta name="author" content="<%= author %>" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Open Graph (for social sharing) -->
+    <meta property="og:title" content="<%= title %>" />
+    <meta property="og:description" content="<%= description %>" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="<%= url %>" />
+    <meta property="og:image" content="<%= image %>" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bakbak+One&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bakbak+One&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bakbak+One&family=Modak&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bakbak+One&family=Modak&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/style/form.css" />
+    <link rel="stylesheet" href="/style/style.css" />
+  </head>
+  <body>
+    <%- include("partial/nav.ejs") %>
+
+    <section class="form-section">
+      <h1>प्रतियोगिता पंजीकरण फॉर्म</h1>
+
+      <form action="/register" method="POST" class="register-form">
+        <!-- Name -->
+        <label>छात्र/छात्रा का नाम</label>
+        <input
+          type="text"
+          name="name"
+          value="<%if (typeof values !== 'undefined' && values) { %> <%= values.name.trim()  %> <% } %>"
+          pattern="^[A-Za-zअ-ह\s]+$"
+          title="केवल अक्षर ही मान्य हैं"
+          placeholder="छात्र/छात्रा का नाम"
+          required
+        />
+
+        <!-- Father's Name -->
+        <label>पिता का नाम</label>
+        <input
+        placeholder="पिता का नाम"
+          type="text"
+          value="<%if (typeof values !== 'undefined' && values) { %> <%= values.fatherName.trim()  %> <% } %>"
+          name="fatherName"
+          pattern="^[A-Za-zअ-ह\s]+$"
+          title="केवल अक्षर ही मान्य हैं"
+          required
+        />
+        <label>आधार नंबर</label>
+        <input
+          type="tel"
+          name="adharNumber"
+          placeholder="12 अंकों का आधार नंबर"
+          pattern="^[0-9]{12}$"
+          title="कृपया 10 अंकों का सही भारतीय मोबाइल नंबर दर्ज करें"
+          required
+        />
+        <label>फ़ोन नंबर</label>
+        <input
+          type="tel"
+          name="phone"
+          placeholder="10 अंकों का मोबाइल नंबर"
+          pattern="^[6-9][0-9]{9}$"
+          title="कृपया 10 अंकों का सही भारतीय मोबाइल नंबर दर्ज करें"
+          required
+        />
+
+        <!-- Age -->
+        <label>आयु</label>
+        
+        <input type="number" placeholder="आयु | 3-15 साल " value="<%if (typeof values !== 'undefined' && values) { %> <%= values.age  %> <% } %>" name="age" min="3" max="15" required />
+
+        <!-- Class -->
+        <label>कक्षा चुनें</label>
+<select
+  name="class"
+  id="classSelect"
+  required
+  onchange="showCompetitions()"
+>
+  <option value="">-- कक्षा चुनें --</option>
+
+  <option value="1-2"  >
+    कक्षा 1–2
+  </option>
+
+  <option value="3-4"  >
+    कक्षा 3–4
+  </option>
+
+  <option value="5-6">
+    कक्षा 5–6
+  </option>
+
+  <option value="7-8" >
+    कक्षा 7–8
+  </option>
+</select>
+
+        <!-- Competition -->
+        <div id="competitionBox" style="display: none">
+          <label>प्रतियोगिता चुनें</label>
+          <select
+            name="competition"
+            id="competitionSelect"
+            required
+          >
+            <option value="">-- प्रतियोगिता चुनें --</option>
+          </select>
+        </div>
+        <button type="submit">फॉर्म सबमिट करें</button>
+      </form>
+      <% if (typeof error !== "undefined" && error) { %>
+      <div class="error-message"><%= error %></div>
+      <% } %>
+    </section>
+    <%- include("partial/footer.ejs") %>
+
+    <script>
+      function showCompetitions() {
+        const classValue = document.getElementById("classSelect").value;
+        const competitionBox = document.getElementById("competitionBox");
+        const competitionSelect = document.getElementById("competitionSelect");
+
+        competitionSelect.innerHTML =
+          '<option value="">-- प्रतियोगिता चुनें --</option>';
+
+        const competitions = {
+          "1-2": ["नींबू-चम्मच दौड़", "50 मीटर दौड़", "कूदते हुए जलेबी खाना"],
+          "3-4": [
+            "15 तक पहाड़ा एवं 100 तक गिनती",
+            "शब्दों की स्पेलिंग एवं अर्थ",
+            "मोबाइल द्वारा प्रश्नों के उत्तर खोजना (AI / YouTube / Chrome)",
+          ],
+          "5-6": [
+            "तार्किक एवं रीजनिंग प्रश्न",
+            "वाक्य आधारित जोड़-घटाव-गुणा प्रश्न",
+            "नागरिक जिम्मेदारी (Civic Sense)",
+            "अंधविश्वास एवं वास्तविक विश्वास में अंतर",
+            "लूडो खेल",
+            "कंप्यूटर आधारित प्रश्न",
+          ],
+          "7-8": ["सामान्य एवं तार्किक प्रश्नोत्तर"],
+        };
+
+        if (classValue && competitions[classValue]) {
+          competitionBox.style.display = "block";
+
+          competitions[classValue].forEach((item) => {
+            const option = document.createElement("option");
+            option.value = item;
+            option.textContent = item;
+            competitionSelect.appendChild(option);
+          });
+        } else {
+          competitionBox.style.display = "none";
+        }
+      }
+      function toggleMenu() {
+        document.getElementById("navLinks").classList.toggle("active");
+      }
+    </script>
+  </body>
+</html>
