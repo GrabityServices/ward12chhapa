@@ -1,56 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <title><%= title %></title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="<%= description %>" />
-    <meta name="keywords" content="<%= keywords %>" />
-    <meta name="author" content="<%= author %>" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- ===== BASIC SEO ===== -->
+  <title>हमारे बारे में | वार्ड-12 राजीव कुमार रंजन</title>
 
-    <!-- Open Graph (for social sharing) -->
-    <meta property="og:title" content="<%= title %>" />
-    <meta property="og:description" content="<%= description %>" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="<%= url %>" />
-    <meta property="og:image" content="<%= image %>" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Bakbak+One&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Bakbak+One&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Bakbak+One&family=Modak&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Bakbak+One&family=Modak&display=swap"
-      rel="stylesheet"
-    />
+  <meta
+    name="description"
+    content="वार्ड-12 राजीव कुमार रंजन के बारे में जानें। सामाजिक, शैक्षणिक एवं जनकल्याण से जुड़ी पहल की पूरी जानकारी।"
+  />
+  <meta
+    name="keywords"
+    content="Ward 12 Chhapa, Rajeev Kumar Ranjan Harhanja, Ward Member 12, RajeevKrRanjan Chhapa  "
+  />
+  <meta name="author" content="Gravity Services" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://ward12.com/about" />
 
-    <link rel="stylesheet" href="/style/about.css" />
-    <link rel="stylesheet" href="/style/style.css" />
-  </head>
+  <!-- ===== SOCIAL SHARE (WhatsApp / Facebook) ===== -->
+  <meta property="og:title" content="हमारे बारे में | वार्ड-12 राजीव कुमार रंजन" />
+  <meta property="og:description" content="वार्ड-12 राजीव कुमार रंजन के बारे में जानें। सामाजिक, शैक्षणिक एवं जनकल्याण से जुड़ी पहल की पूरी जानकारी।" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://ward12.com/about" />
+  <meta property="og:image" content="https://ward12.com/images/bg.jpg" />
+
+  <!-- ===== FAVICONS ===== -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#0A74DA" />
+
+  <!-- ===== FONTS ===== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bakbak+One&family=Modak&family=Noto+Sans:wght@100..900&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- ===== ICONS ===== -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+
+  <!-- ===== CSS ===== -->
+  <link rel="stylesheet" href="/style/about.css" />
+  <link rel="stylesheet" href="/style/style.css" />
+</head>
+
   <body>
     <%- include("partial/nav.ejs") %>
       <section class="about-section">
@@ -134,10 +139,18 @@
     <!-- Vision -->
     <h2>हमारी दृष्टि (Vision)</h2>
     <p>
-      हमारा विश्वास है कि केवल पढ़ाई ही नहीं,
-      बल्कि संस्कार, खेल, नागरिक जिम्मेदारी और
-      व्यावहारिक ज्ञान ही बच्चों को सशक्त बनाता है।
-    </p>
+  हमारा विश्वास है कि केवल पढ़ाई ही किसी बच्चे के सर्वांगीण विकास के लिए पर्याप्त नहीं होती।
+  सच्चा विकास तब होता है जब शिक्षा के साथ-साथ संस्कार, नैतिक मूल्य, अनुशासन और
+  सामाजिक जिम्मेदारी भी बच्चों के जीवन का हिस्सा बनें।
+  खेल बच्चों में टीम भावना, नेतृत्व क्षमता और आत्मविश्वास को विकसित करते हैं,
+  जबकि नागरिक जिम्मेदारी उन्हें एक जागरूक और जिम्मेदार समाज का हिस्सा बनाती है।
+  व्यावहारिक ज्ञान बच्चों को वास्तविक जीवन की चुनौतियों से निपटने में सक्षम बनाता है
+  और उन्हें आत्मनिर्भर बनने की दिशा में प्रेरित करता है।
+  हमारा उद्देश्य ऐसे वातावरण का निर्माण करना है जहाँ बच्चे केवल किताबी ज्ञान तक सीमित न रहें,
+  बल्कि जीवन के हर पहलू में आगे बढ़ें और समाज के लिए सकारात्मक योगदान देने वाले
+  सशक्त, संवेदनशील और जिम्मेदार नागरिक बन सकें।
+</p>
+
 
     <!-- Future Goals -->
     <h2>हमारे भविष्य के लक्ष्य</h2>
