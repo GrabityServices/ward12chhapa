@@ -4,7 +4,6 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
 
 
 <url>
@@ -32,11 +31,4 @@
   <lastmod>2026-01-18T11:27:02+00:00</lastmod>
   <priority>0.80</priority>
 </url>
-<url>
-  <loc>https://ward12chhapa-production.up.railway.app/admin/login</loc>
-  <lastmod>2026-01-18T11:27:02+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-
-
 </urlset>
