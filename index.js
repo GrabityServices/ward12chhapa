@@ -1,11 +1,12 @@
 const express = require("express");
 require("dotenv").config();
+require("./connect.js");
 const path = require("path");
 const Registration = require("./models/form.js");
 const cookieParser = require("cookie-parser");
-require("./connect.js");
+const puppeteer = require("puppeteer");
+const { log } = require("console");
 const PORT = process.env.PORT || 5000;
-console.log (process.env.PORT); 
 const app = express();
 
 // Set EJS as template engine
@@ -144,6 +145,43 @@ app.get("/delete/:id", async (req, res) => {
     res.status(500).send("Error deleting the entry.");
   } 
 });
+
+app.get("/register/Participation", (req, res) => {
+  res.render("participationForm", {
+    error: null
+  });
+});
+
+app.post("/register/Participation", async (req, res) => {
+  try {
+    const { aadharNumber } = req.body;
+const student = await Registration.findOne({
+  adharNumber: aadharNumber
+});
+
+    if (!student) {
+      return res.render("participationForm.ejs", {
+        error: "❌ कोई रिकॉर्ड नहीं मिला। कृपया आधार संख्या जाँचें।"
+      });
+    }
+
+    // render certificate
+    res.render("certificate.ejs", {
+  data: student,
+  directorSign: "/images/directorsign.png",
+  wardSign: "/images/wardsign.png",
+  autoDownload: false   // or true to trigger download immediately
+});
+
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Server Error");
+  }
+});
+
+
+
+
 
 app.use((req, res) => {
   res.status(404).send("404 | Not Found");

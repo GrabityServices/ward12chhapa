@@ -43,6 +43,11 @@ const registrationSchema = new mongoose.Schema(
     competition: {
       type: String,
       required: true
+    },
+    position:{
+      type:String,
+      default:"",
+      enum:["1st",""]
     }
   },
   { timestamps: true }

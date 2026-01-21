@@ -135,13 +135,17 @@
       background: #f9fafb;
     }
 
-    .delete-btn {
+    .delete-btn,.fst-btn {
       background: #ef4444;
       color: #fff;
       padding: 6px 10px;
       border-radius: 5px;
       font-size: 12px;
       text-decoration: none;
+    }
+    .fst-btn{
+      background-color: green;
+      margin-left: 2px;
     }
 
     /* ===== FOOTER NOTE ===== */
@@ -150,6 +154,31 @@
       font-size: 12px;
       color: #6b7280;
     }
+
+    .fst-btn {
+  padding: 6px 12px;
+  border-radius: 6px;
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+}
+
+.active-btn {
+  background-color: #28a745; /* green */
+  cursor: pointer;
+}
+
+.active-remove-btn {
+  background-color: #dc3545; /* red */
+  cursor: pointer;
+}
+
+.disabled-btn {
+  background-color: #aaa;
+  pointer-events: none;
+  opacity: 0.6;
+  cursor: not-allowed;
+}
 
     /* ===== MOBILE RESPONSIVE ===== */
     @media (max-width: 768px) {
@@ -241,6 +270,37 @@
                 onclick="return confirm('Are you sure you want to delete this entry?')">
                 Delete
               </a>
+           <% const isFirst = f.position === "1st"; %>
+
+<% if (isFirst) { %>
+  <a
+    href="javascript:void(0)"
+    class="fst-btn disabled-btn"
+    onclick="return false;">
+    1st
+  </a>
+<% } else { %>
+  <a
+    href="/admin/position/<%= f._id %>"
+    class="fst-btn active-btn"
+    onclick="return confirm('Are you sure you want to give 1st position to this entry?')">
+    1st
+  </a>
+<% } %>
+
+<a
+  href="<%= isFirst ? `/admin/position/remove/${f._id}` : 'javascript:void(0)' %>"
+  class="fst-btn <%= isFirst ? 'active-remove-btn' : 'disabled-btn' %>"
+  <% if (isFirst) { %>
+    onclick="return confirm('Are you sure you want to remove 1st position from this entry?')"
+  <% } else { %>
+    onclick="return false;"
+  <% } %>
+>
+  Remove 1st
+</a>
+
+
             </td>
           </tr>
         <% }) %>
