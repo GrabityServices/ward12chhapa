@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saraswati Puja Certificate 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Rozha+One&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap" rel="stylesheet">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <style>
+        :root {
+            --primary-color: #800000; /* Royal Maroon */
+            --accent-color: #d4af37;  /* Vedic Gold */
+            --text-color: #2c2c2c;
+            --paper-bg: #fffbf0;      /* Warm Cream */
+            --font-heading: 'Rozha One', serif;
+            --font-body: 'Tiro Devanagari Hindi', serif;
+            --font-signature: 'Great Vibes', cursive;
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+
+        body {
+            background-color: #e0e0e0;
+            font-family: var(--font-body);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            margin: 0;
+        }
+
+        /* Certificate Container (A4 Portrait) */
+        .certificate-container {
+            width: 210mm;
+            height: 297mm;
+            background-color: var(--paper-bg);
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* Decorative Background Pattern */
+        .bg-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.05) 0%, transparent 60%),
+                url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4af37' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* The Gold Frame */
+        .border-frame {
+            width: calc(100% - 30mm);
+            height: calc(100% - 30mm);
+            border: 2px solid var(--primary-color);
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 10mm;
+        }
+
+        .border-frame::before {
+            content: "";
+            position: absolute;
+            top: -6px; left: -6px; right: -6px; bottom: -6px;
+            border: 4px double var(--accent-color);
+            pointer-events: none;
+        }
+
+        /* Corner Ornaments (CSS Only) */
+        .corner {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border: 4px solid var(--primary-color);
+            transition: all 0.3s ease;
+        }
+        .top-left { top: -12px; left: -12px; border-right: none; border-bottom: none; }
+        .top-right { top: -12px; right: -12px; border-left: none; border-bottom: none; }
+        .bottom-left { bottom: -12px; left: -12px; border-right: none; border-top: none; }
+        .bottom-right { bottom: -12px; right: -12px; border-left: none; border-top: none; }
+
+        /* Content Styling */
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .om-symbol {
+            font-size: 3rem;
+            color: var(--accent-color);
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .org-name {
+            font-family: var(--font-heading);
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin: 0;
+            line-height: 1.2;
+            text-transform: uppercase;
+        }
+
+        .org-sub {
+            font-size: 1.2rem;
+            color: #555;
+            margin-top: 5px;
+            font-weight: bold;
+        }
+
+        .main-title {
+            background: rgb(235, 65, 13);
+            color: #fff;
+            display: inline-block;
+            padding: 8px 30px;
+            border-radius: 50px;
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            margin-top: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            position: relative;
+        }
+
+        /* Certificate Body */
+        .body-content {
+            text-align: center;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .certify-text {
+            font-size: 1.2rem;
+            color: #666;
+            margin: 20px 0 10px 0;
+            font-style: italic;
+        }
+
+        .student-name {
+            font-family: var(--font-heading);
+            font-size: 3.5rem;
+            color: var(--primary-color);
+            margin: 10px 0;
+            border-bottom: 2px solid var(--accent-color);
+            display: inline-block;
+            padding: 0 20px;
+            line-height: 1.2;
+        }
+
+        /* Data Grid instead of Table */
+        .data-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px 40px;
+            width: 85%;
+            margin: 30px auto;
+            text-align: left;
+            background: rgba(255, 255, 255, 0.6);
+            padding: 20px;
+            border: 1px solid rgba(128, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        .data-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .data-label {
+            font-size: 0.9rem;
+            color: var(--primary-color);
+            font-weight: bold;
+            opacity: 0.8;
+            margin-bottom: 2px;
+        }
+
+        .data-value {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-color);
+            border-bottom: 1px dashed #aaa;
+        }
+
+        .achievement-block {
+            margin: 20px 0;
+        }
+
+        .event-name {
+            font-size: 2rem;
+            color: #d46a00; /* Vibrant Orange */
+            font-family: var(--font-heading);
+            text-shadow: 1px 1px 0px rgba(0,0,0,0.1);
+        }
+
+        /* Footer & Signatures */
+        .footer {
+            margin-top: auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            width: 100%;
+            padding-top: 20px;
+        }
+
+        .signature-box {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .sign-placeholder {
+            font-family: var(--font-signature);
+            font-size: 2.5rem;
+            color: #000080; /* Blue ink color */
+            height: 60px;
+            display: flex;
+            align-items: flex-end;
+            transform: rotate(-5deg);
+        }
+
+        .sign-line {
+            width: 140px;
+            height: 2px;
+            background-color: var(--primary-color);
+            margin: 5px 0;
+        }
+
+        .sign-title {
+            font-weight: bold;
+            font-size: 1rem;
+            color: var(--primary-color);
+        }
+
+        .sign-sub {
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        /* Image Placeholder for Saraswati */
+        .god-image-container {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        .god-image {
+            height: 90px;
+            width: auto;
+            filter: drop-shadow(0 4px 4px rgba(0,0,0,0.2));
+        }
+
+        /* Download Button */
+        .btn-container {
+            margin-top: 30px;
+            text-align: center;
+        }
+        
+        .download-btn {
+            background: linear-gradient(135deg, var(--primary-color), #a00000);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(128, 0, 0, 0.4);
+            transition: transform 0.2s;
+            font-family: var(--font-body);
+            font-weight: bold;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Print adjustments */
+        @media print {
+            body { background: none; margin: 0; padding: 0; }
+            .certificate-container { box-shadow: none; margin: 0; page-break-after: always; }
+            .btn-container { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="certificate-container" id="certificate">
+        <div class="bg-pattern"></div>
+
+        <div class="border-frame">
+            <div class="corner top-left"></div>
+            <div class="corner top-right"></div>
+            <div class="corner bottom-left"></div>
+            <div class="corner bottom-right"></div>
+
+            <div class="header">
+                <div class="god-image-container">
+                    <span class="om-symbol">|| श्री ||</span>
+                </div>
+                <h1 class="org-name">सरस्वती शिशु समाज</h1>
+                <div class="org-sub">हरहंजा (वार्ड-12)</div>
+                <div class="main-title">प्रमाण पत्र</div>
+            </div>
+
+            <div class="body-content">
+                <p class="certify-text">यह प्रमाणित किया जाता है कि</p>
+                
+                <div class="student-name"><%=data.name %></div>
+
+                <div class="data-grid">
+                    <div class="data-item">
+                        <span class="data-label">पिता / अभिभावक</span>
+                        <span class="data-value">श्री <%=data.fatherName %></span>
+                    </div>
+                    <div class="data-item">
+                        <span class="data-label">कक्षा</span>
+                        <span class="data-value"><%=data.class %></span>
+                    </div>
+                    <div class="data-item">
+                        <span class="data-label">आधार संख्या</span>
+                        <span class="data-value"><%=data.adharNumber %></span>
+                    </div>
+                    <div class="data-item">
+                        <span class="data-label">दिनांक</span>
+                        <span class="data-value">23 जनवरी, 2026</span>
+                    </div>
+                </div>
+
+                <p class="certify-text" style="margin: 0;">ने 'सरस्वती पूजा वार्षिक प्रतियोगिता - 2026' के अंतर्गत</p>
+                
+                <div class="achievement-block">
+                    <div class="event-name">"<%=data.competition %>"</div>
+                </div>
+
+                <p class="certify-text" style="margin-top: 0;">
+                    प्रतियोगिता में उत्कृष्ट प्रदर्शन किया।<br>
+                    हम इनके उज्ज्वल भविष्य की कामना करते हैं।
+                </p>
+            </div>
+
+            <div class="footer">
+                <div class="signature-box">
+                    <div class="sign-placeholder"><img src="/images/directorsign.png" style="width: 200px;" alt=""></div>
+                    <div class="sign-line"></div>
+                    <div class="sign-title">सुभाष कुमार</div>
+                    <div class="sign-sub" style="font-size: 10px; margin-top: 10px; margin-bottom: 5px;">+91 8340577606</div>
+                    <div class="sign-sub">प्रतियोगिता निदेशक</div>
+                  </div>
+                  
+                  <div class="signature-box">
+                    <div class="sign-placeholder"><img src="/images/wardsign.png" style="width: 200px;" alt=""></div>
+                    <div class="sign-line"></div>
+                    <div class="sign-title">राजीव कुमार रंजन</div>
+                    <div class="sign-sub" style="font-size: 10px; margin-top: 10px;margin-bottom: 5px;">+91 8603130434</div>
+                    <div class="sign-sub">वार्ड सदस्य (वार्ड-12)</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="btn-container">
+        <button class="download-btn" onclick="downloadCertificate()">Download PDF</button>
+    </div>
+
+    <script>
+        function downloadCertificate() {
+            const element = document.getElementById('certificate');
+            
+            // Optimization settings for high-quality print
+            const opt = {
+                margin:       0,
+                filename:     'Saraswati_Puja_Certificate_2026.pdf',
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { 
+                    scale: 2, // Improves resolution
+                    useCORS: true, 
+                    scrollY: 0,
+                    letterRendering: true
+                },
+                jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+
+            // Status feedback
+            const btn = document.querySelector('.download-btn');
+            const originalText = btn.innerText;
+            btn.innerText = "Generating...";
+            
+            html2pdf().set(opt).from(element).save().then(() => {
+                btn.innerText = originalText;
+            });
+        }
+    </script>
+</body>
+</html>
