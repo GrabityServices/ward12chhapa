@@ -4,7 +4,6 @@ require("./connect.js");
 const path = require("path");
 const Registration = require("./models/form.js");
 const cookieParser = require("cookie-parser");
-const puppeteer = require("puppeteer");
 const { log } = require("console");
 const PORT = process.env.PORT || 5000;
 const app = express();
