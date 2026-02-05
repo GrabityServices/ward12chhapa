@@ -2,4 +2,4 @@
 User-agent: *
 Disallow: 
 Disallow: /cgi-bin/
-Sitemap: https://ward12chhapa-production.up.railway.app/
+Sitemap: https://ward12chhapa-production.up.railway.app/sitemap.xml
